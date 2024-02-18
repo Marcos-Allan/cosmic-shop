@@ -5,7 +5,7 @@ import CardProductLoading from "./Loadings/CardProductLoading";
 import Container from "./Components/Container";
 
 export default function App() {
-  const [listProducts, setListProducts] = useState([
+  const [listProducts] = useState([
     {
       img: 'https://imgnike-a.akamaihd.net/250x250/0269827T.jpg',
       title: "Tênis Air Jordan 1 Low SE Craft Masculino",
