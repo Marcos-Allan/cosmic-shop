@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense, useState } from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import CardProductLoading from "./Loadings/CardProductLoading";
