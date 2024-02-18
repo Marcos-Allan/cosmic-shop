@@ -1,5 +1,6 @@
 export default function Reminders() {
     return(
+        <div className="w-full flex justify-center">
         <div className={`flex w-full max-w-[900px] h-[400px] flex-row gap-[6px]`}>
             <div className={`flex flex-col gap-[6px] w-[50%] h-full`}>
                 <div
@@ -63,6 +64,7 @@ export default function Reminders() {
                     </div>
             </div>
             
+        </div>
         </div>
     )
 }
