@@ -1,7 +1,9 @@
 import React from 'react';
 import { HiStar, HiHeart } from 'react-icons/hi2';
+import Reminders from '../Reminders';
 
 interface CardProductProps {
+    index: number;
     img: string;
     title: string;
     description: string;
@@ -10,6 +12,7 @@ interface CardProductProps {
 }
 
 const CardProduct: React.FC<CardProductProps> = ({
+    index,
     img,
     title,
     description,
@@ -17,8 +20,11 @@ const CardProduct: React.FC<CardProductProps> = ({
     price,
 }) => {
     return (
-        <div className="w-[340px] h-[208px] bg-color-3 mt-3 flex justify-start items-center p-1 pe-0">
-            <img src={img} className="w-[200px] z-3 border-[3px] border-solid border-color-3 hover:scale-[1.04] transition-all duration-[200ms]" alt={title} />
+        <>
+        {index == 2 && (<Reminders />)}
+        <div key={index} className="w-[340px] h-[208px] bg-color-3 mt-3 flex justify-start items-center p-1 pe-0">
+            <img src={img} className={`
+            w-[200px] z-3 border-[3px] border-solid border-color-3 hover:scale-[1.04] transition-all duration-[200ms] cursor-pointer`} alt={title} />
             <div className="w-full h-full relative bg-color-3 p-1 flex justify-start items-center flex-col">
                 <p className="text-color-1 text-center text-[12px] font-semibold">{title}</p>
                 <p className="py-1 mt-2 text-center text-[12px] bg-color-3 text-color-1">{description}</p>
@@ -33,7 +39,7 @@ const CardProduct: React.FC<CardProductProps> = ({
                     <p className="text-[14px] mb-1 text-color-1 font-extrabold">
                         R${price}
                     </p>
-                    <button className="w-[94%] bg-color-4 p-1 rounded-[2px] hover:bg-color-5 transition-all duration-[200ms]">
+                    <button className="w-[94%] bg-color-4 p-1 rounded-[2px] border border-solid border-[transparent]  hover:border-color-1 transition-all duration-[200ms]">
                         <p className="uppercase text-[12px] text-color-1 font-medium">
                             Comprar
                         </p>
@@ -41,6 +47,7 @@ const CardProduct: React.FC<CardProductProps> = ({
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
