@@ -1,13 +1,20 @@
+import { useState } from 'react'
+
 export default function Reminders() {
+    
+    const [isHover, setIsHover] = useState<number>(0)
+
     return(
         <div className="w-full flex justify-center">
         <div className={`flex w-full max-w-[900px] h-[400px] flex-row gap-[6px]`}>
             <div className={`flex flex-col gap-[6px] w-[50%] h-full`}>
                 <div
-                    className={`h-full bg-[#3dff77] relative cursor-pointer`}
+                    className={`h-full bg-[#3dff77] relative cursor-pointer overflow-hidden`}
+                    onMouseEnter={() => setIsHover(1)}
+                    onMouseLeave={() => setIsHover(0)}
                 >
                     <div
-                        className="absolute inset-0 bg-cover bg-center filter brightness-[0.6]"
+                        className={`absolute inset-0 bg-cover bg-center filter transition-all duration-300 ${isHover == 1 ? 'scale-150 brightness-[1]' : 'scale-100 brightness-[0.6]'} `}
                         style={{ backgroundImage: 'url("https://i.pinimg.com/736x/e2/84/71/e2847169762b86ec0a028ce60a944199.jpg")' }}
                     ></div>
 
@@ -19,11 +26,13 @@ export default function Reminders() {
                 </div>
 
                 <div
-                    className={`h-full bg-[#ff5a3d] relative cursor-pointer`}
+                    className={`h-full bg-[#ff5a3d] relative cursor-pointer overflow-hidden`}
+                    onMouseEnter={() => setIsHover(2)}
+                    onMouseLeave={() => setIsHover(0)}
                 >
 
                 <div
-                    className="absolute inset-0 bg-cover bg-center filter brightness-[0.6]"
+                    className={`absolute inset-0 bg-cover bg-center filter transition-all duration-300 ${isHover == 2 ? 'scale-150 brightness-[1]' : 'scale-100 brightness-[0.6]'} `}
                     style={{ backgroundImage: 'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSFDU9Fp2uy9Cna0MB9sxoqYAoS8gBE-fwQQ&usqp=CAU")' }}
                 ></div>
 
@@ -36,11 +45,12 @@ export default function Reminders() {
             </div>
 
             <div
-                className={`w-[50%] h-full bg-[#3d61ff] relative cursor-pointer`}
-                
+                className={`w-[50%] h-full bg-[#3d61ff] relative cursor-pointer overflow-hidden`}
+                onMouseEnter={() => setIsHover(3)}
+                onMouseLeave={() => setIsHover(0)}
             >
                 <div
-                className="absolute inset-0 bg-cover bg-center filter brightness-[0.6]"
+                className={`absolute inset-0 bg-cover bg-center filter transition-all duration-300 ${isHover == 3 ? 'scale-150 brightness-[1]' : 'scale-100 brightness-[0.6]'} `}
                 style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1556906781-9a412961c28c?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8fA%3D%3D")' }}
                 ></div>
                     

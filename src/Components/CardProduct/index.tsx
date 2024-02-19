@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { HiStar, HiHeart } from 'react-icons/hi2';
 import Reminders from '../Reminders';
 
@@ -10,14 +11,22 @@ interface CardProductProps {
     price: string;
 }
 
-const CardProduct: React.FC<CardProductProps> = ({
-    index,
-    img,
-    title,
-    description,
-    stars,
-    price,
-}) => {
+export default function CardProduct(
+    {
+        index,
+        img,
+        title,
+        description,
+        stars,
+        price
+    }:CardProductProps
+){
+    
+    function handleFavorite(){
+        setFavorite(!favorite)
+    }
+    
+    const [favorite, setFavorite] = useState<boolean>(false)
 
     return (
         <>
@@ -65,13 +74,25 @@ const CardProduct: React.FC<CardProductProps> = ({
                     ">{description}</p>
 
                     <div className="absolute w-full flex flex-col items-center bottom-0">
-                        <div className="w-[84%] flex flex-row items-center justify-between mb-[2px]">
-                            <HiHeart className="text-[#D23C3C]
+                        <div
+                            // ref={favoriteIcon}
+                        className="w-[84%] flex flex-row items-center justify-between mb-[2px]">
+                            <HiHeart
+                            className={`
+                            ${favorite == true
+                                ? 'text-[#D23C3C] scale-[1] rotate-[360deg]'
+                                : 'text-[#d9d9d9] scale-[1] rotate-[0deg]'
+                            }
                             text-[14px]
                             sm:text-[16px]
                             md:text-[18px]
                             lg:text-[20px]
-                            " />
+                            transition-all
+                            cursor-pointer
+                            hover:scale-[1.5] duration-[300ms]
+                            `}
+                            onClick={() => handleFavorite()}
+                        />
                             <div className="flex items-center justify-center">
                                 <p className="
                                 me-1 font-extrabold text-color-1
@@ -119,5 +140,3 @@ const CardProduct: React.FC<CardProductProps> = ({
         </>
     );
 };
-
-export default CardProduct;

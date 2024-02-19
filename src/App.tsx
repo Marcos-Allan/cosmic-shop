@@ -23,9 +23,30 @@ export default function App() {
     {
       img: 'https://imgnike-a.akamaihd.net/360x360/02732251.jpg',
       title: "Tênis Nike Air Max Excee Masculino",
-      description: 'Tênis Nike Perfeito Para Uso Do Dia a Dia',
+      description: 'Tênis Nike Perfeito Para Uso Do Dia a Dia Branco',
       stars: '4.6',
       price: '519,99',
+    },
+    {
+      img: 'https://imgnike-a.akamaihd.net/250x250/007581ID.jpg',
+      title: "Tênis Nike Air Max Excee Masculino",
+      description: 'Tênis Nike Perfeito Para Uso Do Dia a Dia Preto',
+      stars: '5.0',
+      price: '1.599,99',
+    },
+    {
+      img: 'https://imgnike-a.akamaihd.net/250x250/02841451.jpg',
+      title: "Tênis Nike Air Jordan 1 High OG",
+      description: 'Tênis Nike Perfeito Para Multitarefas',
+      stars: '4.3',
+      price: '1.799,99',
+    },
+    {
+      img: 'https://imgnike-a.akamaihd.net/250x250/0264675A.jpg',
+      title: "Tênis Nike Jordan One Take 4 Masculino",
+      description: 'Tênis Nike Extravagante Multifuncional',
+      stars: '4.8',
+      price: '999,99',
     }
   ]);
 
@@ -45,7 +66,7 @@ export default function App() {
                 description={product.description}
                 stars={product.stars}
                 price={product.price}
-                />
+              />
           </Suspense>
         ))}
         </Container>
