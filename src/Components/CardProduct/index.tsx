@@ -26,6 +26,16 @@ export default function CardProduct(
         setFavorite(!favorite)
     }
     
+    function renderStars(quantidade:number) {
+        const estrelas = [];
+      
+        for (let i = 0; i < quantidade; i++) {
+          estrelas.push(<HiStar key={i} className="text-[#FFEC94] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]" />);
+        }
+      
+        return estrelas;
+    }
+
     const [favorite, setFavorite] = useState<boolean>(false)
 
     return (
@@ -35,20 +45,22 @@ export default function CardProduct(
             sm:w-[370px] sm:h-[250px]
             md:w-[420px] md:h-[300px]
             lg:w-[470px] lg:h-[350px]
-            bg-color-3 my-3 flex justify-start items-center p-1 pe-0 mx-2 relative">
+            my-3 flex justify-start items-center p-1 pe-0 mx-2 relative
+            
+            ">
                 <img src={img} className={`
                 w-[200px]
                 sm:w-[250px]
                 md:w-[300px]
                 lg:w-[350px]
-                z-3 border-[3px] border-solid border-color-3 hover:opacity-50 transition-all duration-300 cursor-pointer`} alt={title} />
+                z-3 border-[2px] border-solid border-color-3 hover:opacity-50 transition-all duration-300 cursor-pointer`} alt={title} />
 
                 {/* INFORMAÇÕES DO PRODUTO */}
                 <div className={`
-                    h-[180px] w-[100px]
-                    sm:h-[230px] sm:w-[160px]
-                    md:h-[280px] md:w-[210px]
-                    lg:h-[330px] lg:w-[260px]
+                    h-[200px] w-[100px]
+                    sm:h-[250px] sm:w-[160px]
+                    md:h-[300px] md:w-[210px]
+                    lg:h-[350px] lg:w-[260px]
                     relative flex-1 bg-color-3 p-1 flex justify-start items-center flex-col
                 `}>
                     
@@ -73,10 +85,10 @@ export default function CardProduct(
                     lg:text-[16px]
                     ">{description}</p>
 
-                    <div className="absolute w-full flex flex-col items-center bottom-0">
+                    <div className="absolute w-full flex flex-col items-center bottom-[3px]">
                         <div
                             // ref={favoriteIcon}
-                        className="w-[84%] flex flex-row items-center justify-between mb-[2px]">
+                        className="w-[84%] flex flex-col items-center justify-between mb-[2px]">
                             <HiHeart
                             className={`
                             ${favorite == true
@@ -87,28 +99,17 @@ export default function CardProduct(
                             sm:text-[16px]
                             md:text-[18px]
                             lg:text-[20px]
+                            mb-2
                             transition-all
                             cursor-pointer
                             hover:scale-[1.5] duration-[300ms]
                             `}
                             onClick={() => handleFavorite()}
                         />
-                            <div className="flex items-center justify-center">
-                                <p className="
-                                me-1 font-extrabold text-color-1
-                                text-[12px]
-                                sm:text-[14px]
-                                md:text-[16px]
-                                lg:text-[18px]
-                                ">{stars}</p>
-                                <HiStar className="
-                                text-[#FFEC94]
-                                text-[14px]
-                                sm:text-[16px]
-                                md:text-[18px]
-                                lg:text-[20px]
-                                " />
+                            <div className="flex items-center justify-center mb-2">
+                               {renderStars(Math.floor(Number(stars)))}
                             </div>
+
                         </div>
                         <p className="
                         mb-1 text-color-1 font-extrabold
@@ -135,7 +136,7 @@ export default function CardProduct(
 
             </div>
 
-            {index == 2 && (<Reminders />)}
+            {index == 3 && (<Reminders />)}
             
         </>
     );

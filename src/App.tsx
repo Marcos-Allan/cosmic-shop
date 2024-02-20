@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import CardProductLoading from "./Loadings/CardProductLoading";
 import Container from "./Components/Container";
+import Sidenav from "./Components/Sidenav";
 
 export default function App() {
   const [listProducts] = useState([
@@ -53,24 +54,27 @@ export default function App() {
   const Card = React.lazy(() => import("./Components/CardProduct"));
 
   return (
-    <div className={`w-screen h-screen bg-color-1 flex flex-col justify-start items-center overflow-x-hidden`}>
-      <Header />
-      <Container>
-        {listProducts.map((product, index) => (
-            <Suspense fallback={<CardProductLoading />}>
-              <Card
-                key={index}
-                index={index}
-                img={product.img}
-                title={product.title}
-                description={product.description}
-                stars={product.stars}
-                price={product.price}
-              />
-          </Suspense>
-        ))}
-        </Container>
-      <Footer />
+    <div className={`relative w-full h-screen overflow-y-hidden flex`}>
+      <Sidenav />
+      <div>
+        <Header />
+        <Container>
+          {listProducts.map((product, index) => (
+              <Suspense fallback={<CardProductLoading />}>
+                <Card
+                  key={index}
+                  index={index}
+                  img={product.img}
+                  title={product.title}
+                  description={product.description}
+                  stars={product.stars}
+                  price={product.price}
+                  />
+            </Suspense>
+          ))}
+          </Container>
+        <Footer />
+        </div>
     </div>
   );
 }
