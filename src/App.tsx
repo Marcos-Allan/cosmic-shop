@@ -3,7 +3,6 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import CardProductLoading from "./Loadings/CardProductLoading";
 import Container from "./Components/Container";
-import Sidenav from "./Components/Sidenav";
 
 export default function App() {
   const [listProducts] = useState([
@@ -54,13 +53,11 @@ export default function App() {
   const Card = React.lazy(() => import("./Components/CardProduct"));
 
   return (
-    <div className={`relative w-full h-screen overflow-y-hidden flex`}>
-      <Sidenav />
-      <div>
+    <div className={`relatives w-full h-screen overflow-y-scroll scrollbar-w-2 scrollbar scrollbar-thumb-color-4 scrollbar-track-color-1`}>
         <Header />
         <Container>
           {listProducts.map((product, index) => (
-              <Suspense fallback={<CardProductLoading />}>
+            <Suspense fallback={<CardProductLoading />}>
                 <Card
                   key={index}
                   index={index}
@@ -74,7 +71,6 @@ export default function App() {
           ))}
           </Container>
         <Footer />
-        </div>
-    </div>
+      </div>
   );
 }

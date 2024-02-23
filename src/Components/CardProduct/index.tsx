@@ -44,7 +44,7 @@ export default function CardProduct(
             w-[300px] h-[200px]
             sm:w-[370px] sm:h-[250px]
             md:w-[420px] md:h-[300px]
-            lg:w-[470px] lg:h-[350px]
+            lg:w-[550px] lg:h-[350px]
             my-3 flex justify-start items-center p-1 pe-0 mx-2 relative
             
             ">
@@ -92,7 +92,7 @@ export default function CardProduct(
                             <HiHeart
                             className={`
                             ${favorite == true
-                                ? 'text-[#D23C3C] scale-[1] rotate-[360deg]'
+                                ? 'text-[#D23C3C] scale-[1.5] rotate-[360deg]'
                                 : 'text-[#d9d9d9] scale-[1] rotate-[0deg]'
                             }
                             text-[14px]
@@ -102,7 +102,8 @@ export default function CardProduct(
                             mb-2
                             transition-all
                             cursor-pointer
-                            hover:scale-[1.5] duration-[300ms]
+                            duration-[300ms]
+                            hover:scale-[1.5]
                             `}
                             onClick={() => handleFavorite()}
                         />
