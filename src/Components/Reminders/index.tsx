@@ -5,7 +5,7 @@ export default function Reminders() {
     const [isHover, setIsHover] = useState<number>(0)
 
     return(
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center mt-[6px]">
             <div className={`flex w-full max-w-[950px] h-[500px] flex-row items-center justify-center gap-[6px]`}>
                 <div className={`flex flex-col gap-[6px] w-[50%] h-full`}>
                     <div

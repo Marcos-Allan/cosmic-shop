@@ -30,111 +30,63 @@ export default function CardProduct(
         const estrelas = [];
       
         for (let i = 0; i < quantidade; i++) {
-          estrelas.push(<HiStar key={i} className="text-[#FFEC94] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]" />);
+          estrelas.push(<HiStar key={i} className="text-[#fcff65]
+          text-[12px]" />);
         }
       
         return estrelas;
     }
 
     const [favorite, setFavorite] = useState<boolean>(false)
+    const [hover, setHover] = useState<boolean>(false)
 
     return (
         <>
-            <div key={index} className="
-            w-[300px] h-[200px]
-            sm:w-[370px] sm:h-[250px]
-            md:w-[420px] md:h-[300px]
-            lg:w-[550px] lg:h-[350px]
-            my-3 flex justify-start items-center p-1 pe-0 mx-2 relative
-            
-            ">
-                <img src={img} className={`
-                w-[200px]
-                sm:w-[250px]
-                md:w-[300px]
-                lg:w-[350px]
-                z-3 border-[2px] border-solid border-color-3 hover:opacity-50 transition-all duration-300 cursor-pointer`} alt={title} />
-
-                {/* INFORMAÇÕES DO PRODUTO */}
-                <div className={`
-                    h-[200px] w-[100px]
-                    sm:h-[250px] sm:w-[160px]
-                    md:h-[300px] md:w-[210px]
-                    lg:h-[350px] lg:w-[260px]
-                    relative flex-1 bg-color-3 p-1 flex justify-start items-center flex-col
+            <div className={`
+                bg-color-3 max-w-[472px] mt-[6px] flex items-center p-[5px]
+                w-[84%]
+                ${index == 0 || index % 2 == 0 ? 'me-[6px]' : ''}
+                h-[200px]
+                relative
                 `}>
-                    
-                    <p className="
-                    text-color-1 text-center font-bold
-                    text-[10px]
-                    sm:text-[12px]
-                    md:text-[14px]
-                    lg:text-[16px]
-                    "
-                    >{title}</p>
+                
+                <img src={img} className={`w-[190px] hover:opacity-[0.6] transition-all duration-[250ms] cursor-pointer`} />
 
-                    <p className="
-                    py-1 mt-1 text-center bg-color-3 text-color-1 overflow-y-auto scrollbar-thin scrollbar-thumb-color-1 scrollbar-track-color-3
-                    h-[60px] 
-                    sm:h-[90px] 
-                    md:h-[100px] 
-                    lg:h-[120px] 
-                    text-[10px]
-                    sm:text-[12px]
-                    md:text-[14px]
-                    lg:text-[16px]
-                    ">{description}</p>
+                <div className={`flex-grow-[1] flex flex-col items-center justify-between h-full pb-[28px] px-[5px] pt-[3px] relative`}>
+                    <h1 className={`text-center text-[11px] text-color-1 mb-1 hover:underline cursor-pointer`}>{title}</h1>
 
-                    <div className="absolute w-full flex flex-col items-center bottom-[3px]">
-                        <div
-                            // ref={favoriteIcon}
-                        className="w-[84%] flex flex-col items-center justify-between mb-[2px]">
-                            <HiHeart
-                            className={`
-                            ${favorite == true
-                                ? 'text-[#D23C3C] scale-[1.5] rotate-[360deg]'
-                                : 'text-[#d9d9d9] scale-[1] rotate-[0deg]'
-                            }
-                            text-[14px]
-                            sm:text-[16px]
-                            md:text-[18px]
-                            lg:text-[20px]
-                            mb-2
-                            transition-all
-                            cursor-pointer
-                            duration-[300ms]
-                            hover:scale-[1.5]
-                            `}
-                            onClick={() => handleFavorite()}
-                        />
-                            <div className="flex items-center justify-center mb-2">
-                               {renderStars(Math.floor(Number(stars)))}
-                            </div>
+                    <p className={`text-center text-[9px] text-color-1 mb-1 hover:underline cursor-pointer`}>{description}</p>
 
-                        </div>
-                        <p className="
-                        mb-1 text-color-1 font-extrabold
-                        text-[12px]
-                        sm:text-[14px]
-                        md:text-[16px]
-                        lg:text-[18px]
-                        ">
-                            R${price}
-                        </p>
-                        <button className="w-[94%] bg-color-4 p-1 rounded-[2px] text-color-1 hover:text-color-4 hover:bg-color-1  transition-all duration-[400ms]">
-                            <p className="
-                            uppercase font-medium
-                            text-[12px]
-                            sm:text-[14px]
-                            md:text-[16px]
-                            lg:text-[18px]
-                            ">
-                                Comprar
-                            </p>
-                        </button>
+                    <div className={`flex`}>
+                        {renderStars(Number(stars))}
                     </div>
-                </div>
 
+                    <HiHeart
+                        onClick={() => handleFavorite()}
+                        className={`
+                            ${favorite == true ? 'text-[#ff3a3a] scale-[1.5] rotate-[360deg]' : 'text-color-1 scale-[1] rotate-[0deg]'}
+                            transition-all duration-[350ms] cursor-pointer
+                            text-[14px]
+                        `}
+                    />
+
+                    <h2 className={`text-center text-[14px] text-color-1`}>R$ {price}</h2>
+
+                    <button className={`
+                        absolute w-[calc(100%-12px)] h-[24px] bottom-[3px] flex justify-center items-center cursor-pointer
+                        transition-all duration-[250ms]
+                        ${hover == true ? 'bg-color-1' : 'bg-color-4'}
+                        `}
+                        onMouseEnter={() => setHover(true)}
+                        onMouseLeave={() => setHover(false)}
+                    >
+                        <p className={`
+                            text-center uppercase text-[11px]
+                            transition-all duration-[250ms] font-medium
+                            ${hover == true ? 'text-color-4' : 'text-color-1'}
+                        `}>add to cart</p>
+                    </button>
+                </div>
             </div>
 
             {index == 3 && (<Reminders />)}

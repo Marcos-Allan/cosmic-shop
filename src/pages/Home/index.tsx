@@ -1,10 +1,10 @@
 import React, { Suspense, useState } from "react";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import CardProductLoading from "./Loadings/CardProductLoading";
-import Container from "./Components/Container";
+import Header from "../../Components/Header";
+import Footer from "../../Components/Footer";
+import CardProductLoading from "../../Loadings/CardProductLoading";
+import Container from "../../Components/Container";
 
-export default function App() {
+export default function Home() {
   const [listProducts] = useState([
     {
       img: 'https://imgnike-a.akamaihd.net/250x250/0269827T.jpg',
@@ -50,7 +50,7 @@ export default function App() {
     }
   ]);
 
-  const Card = React.lazy(() => import("./Components/CardProduct"));
+  const Card = React.lazy(() => import("../../Components/CardProduct"));
 
   return (
     <div className={`relatives w-full h-screen overflow-y-scroll scrollbar-w-2 scrollbar scrollbar-thumb-color-4 scrollbar-track-color-1`}>
